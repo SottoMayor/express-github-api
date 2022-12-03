@@ -30,3 +30,11 @@ exports.getUser = async (req, res) => {
 
     return res.status(200).json({ user: JSON.stringify(data) });
 };
+
+exports.getRepository = async (req, res) => {
+    const username = req.params.username;
+
+    const { data } = await axios.get(`${baseURL}/users/${username}/repos`);
+
+    return res.status(200).json({ repositories: JSON.stringify(data) });
+}
