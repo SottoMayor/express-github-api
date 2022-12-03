@@ -1,15 +1,9 @@
-const dotenv = require('dotenv');
+const githubController = require('../controllers/github-controller');
 const express = require('express');
-
-dotenv.config()
-const baseURL = process.env.BASE_URL
-
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', githubController.healthCheck)
+router.get('/api/users', githubController.getUsers)
 
-    console.log(baseURL);
-    return res.json({message:'Fala galera!'})
-})
 
 module.exports = router
