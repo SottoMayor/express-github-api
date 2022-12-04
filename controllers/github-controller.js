@@ -20,8 +20,8 @@ exports.getUsers = async (req, res, next) => {
 
     return res.status(200).json({
         users: JSON.stringify(data),
-        previous_page: `/api/users?since=${firstRecordId - 1}`,
-        next_page: `/api/users?since=${lastRecordId}`,
+        previous_page: `?since=${firstRecordId - 1 - itemsPerPage}`,
+        next_page: `?since=${lastRecordId}`,
     });
 };
 
